@@ -21,17 +21,17 @@ The application.properties file contains the configuration for the database conn
 To run the application, you can use the following command:
 
 ```
-$ mvn spring-boot:run
+ mvn spring-boot:run
 ```
 
 You can also build the application with the following command:
 
 ```
-$ mvn clean package
+ mvn clean package
 ```
 
 This will generate an executable JAR file under the target directory. You can run the JAR file with the following command:
 
 ```
-$ java -jar target/employee-app-0.0.1-SNAPSHOT.jar
+ java -jar target/employee-app-0.0.1-SNAPSHOT.jar
 ```
