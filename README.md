@@ -1,6 +1,61 @@
 # Simple Employee API
 
-This is a sample Spring Boot application that provides REST API endpoints to manage employees. The application is built with Spring Boot 3.0.6 and uses PostgreSQL as the database.
+This is a simple employee management API built with Spring Boot.
+
+## Prerequisites
+
+To run this application, you will need to have the following installed:
+
+- Java 17
+- Maven 3
+- Docker (Optional)
+- Docker Compose (Optional)
+
+## Building the Application
+
+To build the application, run the following command from the root directory of the project:
+
+```
+mvn clean install
+```
+
+## Running the Application
+
+### Using Maven
+
+To run the application using Maven, run the following command from the root directory of the project:
+
+```
+mvn spring-boot:run
+```
+
+### Using Docker
+
+To run the application using Docker, you can use the following steps:
+
+1. Clone the repository:
+
+```
+git clone https://github.com/devynlab/workfleek-employee-app.git
+```
+
+2. Change into the project directory:
+
+```
+cd employee-app
+```
+
+3. Run the following command to build the Docker image:
+
+```
+docker-compose up --build
+```
+
+This will start the Employee API and PostgreSQL database containers.
+
+You can access the API by navigating to http://127.0.0.1:8080/api/v1/employee-app in your web browser.
+
+## API Endpoints
 
 The application provides the following REST API endpoints:
 
@@ -12,26 +67,11 @@ The application provides the following REST API endpoints:
 | PUT        | /api/v1/employee-app/employees/{empNo} | updates a specific employee by employee number   |
 | DELETE     | /api/v1/employee-app/employees/{empNo} | deletes a specific employee by employee number   |
 
-The application uses the `@Valid` annotation to validate incoming requests. The `EmployeeRequest` class is used to map the incoming JSON request body to a Java object. The `EmployeeResponse` class is used to map the response data to a JSON format.
+## Technology Stack
 
-The application uses ModelMapper to map the incoming EmployeeRequest object to a Employee entity object and vice versa.
+The application is built with the following technologies:
 
-The application.properties file contains the configuration for the database connection and other application settings.
-
-To run the application, you can use the following command:
-
-```
- mvn spring-boot:run
-```
-
-You can also build the application with the following command:
-
-```
- mvn clean package
-```
-
-This will generate an executable JAR file under the target directory. You can run the JAR file with the following command:
-
-```
- java -jar target/employee-app-0.0.1-SNAPSHOT.jar
-```
+- Spring Boot 3.0.6
+- PostgreSQL
+- Docker 23.0.6
+- Docker Compose 2.17.3

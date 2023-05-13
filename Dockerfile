@@ -19,6 +19,9 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
+LABEL maintainer="Laban Kosgey <devynlab@gmail.com>"
+LABEL description="A Simple Employee API with Spring Boot."
+
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
