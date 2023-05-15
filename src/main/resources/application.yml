@@ -12,6 +12,21 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:9090/realms/EmployeeRealm
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://127.0.0.1:9090/realms/EmployeeRealm
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            authorization-grant-type: authorization_code
+            client-id: employee-app
+            scope: openid
 
 server:
   port: 8080

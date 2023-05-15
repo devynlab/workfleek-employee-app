@@ -1,21 +1,46 @@
 version: '3'
 
 services:
-  employee-api:
-    image: workfleek-employee-api
-    container_name: employee-api
-    build: .
-    depends_on:
-      - employee-db
-    env_file:
-      - .env
-    ports:
-      - "127.0.0.1:8080:8080"
+  #  employee-api:
+  #    image: workfleek-employee-api
+  #    container_name: employee-api
+  #    build: .
+  #    depends_on:
+  #      - employee-db
+  #    env_file:
+  #      - employee.env
+  #    ports:
+  #      - "127.0.0.1:8080:8080"
 
   employee-db:
     image: postgres
     container_name: employee-db
     env_file:
-      - .env
+      - employee.env
     ports:
       - "127.0.0.1:5432:5432"
+    volumes:
+      - ./employee-db-data:/var/lib/postgresql/data
+
+  keycloak-server:
+    image: quay.io/keycloak/keycloak
+    command: start-dev
+    container_name: keycloak-server
+    depends_on:
+      - keycloak-db
+    env_file:
+      - keycloak.env
+    ports:
+      - "127.0.0.1:9090:8080"
+    volumes:
+      - ./keycloak-db-data:/var/lib/postgresql/data
+
+  keycloak-db:
+    image: postgres
+    container_name: keycloak-db
+    env_file:
+      - keycloak.env
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - ./keycloak-db-data:/var/lib/postgresql/data
