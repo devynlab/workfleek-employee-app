@@ -26,8 +26,10 @@ public class EmployeeController {
   @GetMapping
   public ResponseEntity<Page<EmployeeResponse>> findAll(
       @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-      @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
-    return ResponseEntity.ok(employeeService.findAll(page, size));
+      @RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
+      @RequestParam(name = "sortColumn", required = false, defaultValue = "id") String sortColumn,
+      @RequestParam(name = "sortOrder", required = false, defaultValue = "asc") String sortOrder) {
+    return ResponseEntity.ok(employeeService.findAll(page, size, sortColumn, sortOrder));
   }
 
   @GetMapping("{empNo}")

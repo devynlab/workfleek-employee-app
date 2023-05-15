@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -29,8 +30,9 @@ public class EmployeeService {
     return modelMapper.map(savedEmployee, EmployeeResponse.class);
   }
 
-  public Page<EmployeeResponse> findAll(Integer page, Integer size) {
-    Pageable pageable = PageRequest.of(page, size);
+  public Page<EmployeeResponse> findAll(Integer page, Integer size, String sortColumn, String sortOrder) {
+    Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortColumn);
+    Pageable pageable = PageRequest.of(page, size, sort);
     Page<Employee> employees = employeeRepo.findAll(pageable);
     return employees.map(employee -> modelMapper.map(employee, EmployeeResponse.class));
   }
