@@ -48,24 +48,24 @@ cd employee-app
 3. Run the following command to build the Docker image:
 
 ```
-docker-compose up --build
+docker-compose up
 ```
 
 This will start the Employee API and PostgreSQL database containers.
 
-You can access the API by navigating to http://127.0.0.1:8080/api/v1/employee-app in your web browser.
+You can access the API by navigating to http://127.0.0.1:8000/api/v1/employees in your web browser.
 
 ## API Endpoints
 
 The application provides the following REST API endpoints:
 
-| **Method** | **Path**                               | **Description**                                  |
-| :--------- | -------------------------------------- | ------------------------------------------------ |
-| POST       | /api/v1/employee-app/employees         | creates a new employee                           |
-| GET        | /api/v1/employee-app/employees         | retrieves all employees with pagination support  |
-| GET        | /api/v1/employee-app/employees/{empNo} | retrieves a specific employee by employee number |
-| PUT        | /api/v1/employee-app/employees/{empNo} | updates a specific employee by employee number   |
-| DELETE     | /api/v1/employee-app/employees/{empNo} | deletes a specific employee by employee number   |
+| **Method** | **Path**                  | **Description**                                  |
+| :--------- | ------------------------- | ------------------------------------------------ |
+| POST       | /api/v1/employees         | creates a new employee                           |
+| GET        | /api/v1/employees         | retrieves all employees with pagination support  |
+| GET        | /api/v1/employees/{empNo} | retrieves a specific employee by employee number |
+| PUT        | /api/v1/employees/{empNo} | updates a specific employee by employee number   |
+| DELETE     | /api/v1/employees/{empNo} | deletes a specific employee by employee number   |
 
 ## Technology Stack
 

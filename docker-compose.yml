@@ -10,7 +10,6 @@ services:
     env_file: employee.env
     ports:
       - "127.0.0.1:8000:8080"
-    restart: unless-stopped
 
   workfleek-employee-db:
     image: postgres
@@ -20,7 +19,6 @@ services:
       - "127.0.0.1:5432:5432"
     volumes:
       - ./employee-db-data:/var/lib/postgresql/data
-    restart: unless-stopped
 
   workfleek-keycloak-server:
     image: quay.io/keycloak/keycloak
@@ -33,7 +31,6 @@ services:
       - "127.0.0.1:8080:8080"
     volumes:
       - ./keycloak-realms/:/opt/keycloak/data/import/
-    restart: unless-stopped
 
   workfleek-keycloak-db:
     image: postgres
@@ -43,4 +40,3 @@ services:
       - "127.0.0.1:5433:5432"
     volumes:
       - ./keycloak-db-data:/var/lib/postgresql/data
-    restart: unless-stopped
